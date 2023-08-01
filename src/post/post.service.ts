@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Post } from './post.interface';
+import { Post } from './dto/post';
 import { dummyPosts } from './dummy-posts';
 
 @Injectable()

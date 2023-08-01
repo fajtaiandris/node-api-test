@@ -1,4 +1,4 @@
-import { Post } from './post.interface';
+import { Post } from './dto/post';
 export const dummyPosts: Post[] = [
   {
     id: 1,
