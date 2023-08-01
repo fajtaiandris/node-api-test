@@ -7,4 +7,8 @@ export class PostService {
   findAll(): Post[] {
     return dummyPosts;
   }
+
+  find(id: number): Post | undefined {
+    return dummyPosts.find((post) => post.id === id);
+  }
 }
