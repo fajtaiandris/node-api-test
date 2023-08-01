@@ -13,6 +13,10 @@ export class PostService {
     return dummyPosts.find((post) => post.id === id);
   }
 
+  findByTag(tag: string): Post[] {
+    return dummyPosts.filter((post) => post.tags.includes(tag));
+  }
+
   getCommentsByPostId(id: number): Comment[] {
     const post = this.find(id);
     if (!post) {

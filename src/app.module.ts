@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { PostModule } from './post/post.module';
+import { TagController } from './tag/tag.controller';
+import { TagModule } from './tag/tag.module';
 
 @Module({
   imports: [
@@ -11,8 +13,9 @@ import { PostModule } from './post/post.module';
       rootPath: join(__dirname, '..', 'client'),
     }),
     PostModule,
+    TagModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, TagController],
   providers: [AppService],
 })
 export class AppModule {}
