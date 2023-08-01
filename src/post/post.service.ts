@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { Post } from './dto/post';
-import { Comment } from './dto/comment';
 import { dummyPosts } from './dummy-posts';
 
 @Injectable()
@@ -15,13 +14,5 @@ export class PostService {
 
   findByTag(tag: string): Post[] {
     return dummyPosts.filter((post) => post.tags.includes(tag));
-  }
-
-  getCommentsByPostId(id: number): Comment[] {
-    const post = this.find(id);
-    if (!post) {
-      return [];
-    }
-    return post.comments;
   }
 }

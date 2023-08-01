@@ -37,6 +37,10 @@ export class PostController {
   @ApiParam({ name: 'id', type: 'number', description: 'The ID of the post.' })
   @ApiOkResponse({ type: CommentResponse })
   getComments(@Param('id', ParseIntPipe) id: number) {
-    return { data: this.postService.getCommentsByPostId(id) };
+    const post = this.postService.find(id);
+    if (!post) {
+      throw new NotFoundException(`Post not found with id '${id}'`);
+    }
+    return { data: post.comments };
   }
 }

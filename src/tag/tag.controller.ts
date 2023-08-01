@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { ApiOkResponse, ApiParam } from '@nestjs/swagger';
-import { PostArrayResponse } from 'src/post/dto/post-array-response';
-import { PostService } from 'src/post/post.service';
+import { PostArrayResponse } from '../post/dto/post-array-response';
+import { PostService } from '../post/post.service';
 
 @Controller('api/tags')
 export class TagController {
