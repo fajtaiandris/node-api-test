@@ -9,6 +9,7 @@ import { ApiOkResponse, ApiParam, ApiTags } from '@nestjs/swagger';
 import { PostService } from './post.service';
 import { PostArrayResponse } from './dto/post-array-response';
 import { PostResponse } from './dto/post-response';
+import { CommentResponse } from './dto/comment-response';
 
 @Controller('api/posts')
 @ApiTags('Posts')
@@ -30,5 +31,12 @@ export class PostController {
       throw new NotFoundException(`Post not found with id '${id}'`);
     }
     return { data: post };
+  }
+
+  @Get(':id/comments')
+  @ApiParam({ name: 'id', type: 'number', description: 'The ID of the post.' })
+  @ApiOkResponse({ type: CommentResponse })
+  getComments(@Param('id', ParseIntPipe) id: number) {
+    return { data: this.postService.getCommentsByPostId(id) };
   }
 }

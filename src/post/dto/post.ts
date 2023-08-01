@@ -1,4 +1,6 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
+import { Comment } from './comment';
+import { Exclude } from 'class-transformer';
 
 /**
  * Represents a blog post.
@@ -7,7 +9,7 @@ export class Post {
   /**
    * The unique identifier for the post.
    */
-  @ApiProperty()
+  @ApiProperty({ type: 'number' })
   id: number;
 
   /**
@@ -64,4 +66,8 @@ export class Post {
     },
   })
   tags: string[];
+
+  @ApiHideProperty()
+  @Exclude()
+  comments: Comment[];
 }
